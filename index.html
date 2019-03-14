@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+   
+</head>
+<body>
+
+    <h2 id="title">Local Storage</h2>
+    <fieldset>
+        <legend>Insert Data</legend>
+        <input id="inpKey" type="text" placeholder="Enter Key...">
+        <input id="inpValue" type = "text" placeholder="Enter Value...">
+        <button type="button" id="btnInsert">Insert Data</button>
+    </fieldset>
+    <fieldset>
+        <legend>Local Storage</legend>
+        <div id="IsOutput"></div>
+    </fieldset>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ <script type="text/javascript">
+     var inpKey = document.getElementById('inpKey');
+     var inpValue = document.getElementById('inpValue');
+     var btnInsert = document.getElementById('btnInsert');
+     var IsOutput = document.getElementById('IsOutput')
+
+     //btnInsert.onclick = function(){
+         $('#btnInsert').on('click', function(){
+         var key = inpKey.value;
+         var value = inpValue.value;
+         event.preventDefault();
+         console.log(key);
+         console.log(value);
+
+         if (key && value){
+             localStorage.setItem(key, value);
+             //location.reload();
+        }
+        for(let i=0; i < localStorage.length; i++){
+           var key = localStorage.key(i);
+           var value = localStorage.getItem(key); 
+           //$('.IsOutput').append("key", "value")
+           IsOutput.innerHTML += `${key}: ${value}<br>`;
+        }
+     })
+ </script>    
+</body>
+</html>
